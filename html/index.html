@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Exemplo de inserção de variável em HTML</title>
+  </head>
+  <body>
+    <p>Olá, seja muito bem vindo, <span id="func"></span>!</p>
+    <script>
+      var func = prompt("Por favor insira o valor de x na função: ");
+      document.getElementById("func").innerHTML = func;
+    </script>
+  </body>
+</html>
