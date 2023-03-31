@@ -2,67 +2,21 @@
 <html>
   <head>
     <link rel="stylesheet" href="C:\Users\labinfo\Desktop\dev\CalculoNumerico\css\main.css">
-    <meta charset="UTF-8">
+    <title>Calculadora de Funções Polinomiais</title>
   </head>
   <body>
-    <h1>Calculadora Polinomial</h1>
-    <form id="formulario">
-      <div>
-        <label for="grau">Grau do polinômio:</label>
-        <input type="number" id="grau" name="grau" min="0" required>
-      </div>
-      <div id="coeficientes">
-        <label for="x0">x0:</label>
-        <input type="number" id="x0" name="x0"  required>
-      </div>
-      <input type="submit" value="Calcular">
+    
+    <form id="polynomial-form">
+      <h1>Calculadora de Funções Polinomiais</h1>
+      <label for="degree">Grau:</label>
+      <input type="number" id="degree" name="degree" min="1" max="10" required>
+      <br>
+      <br>
+      <label>Coeficientes:</label>
+      <div id="coefficients"></div>
+      <br>
+      <button type="submit">Calcular</button>
     </form>
-    <script>
-     
-      const formulario = document.getElementById('formulario');
-      const grau = document.getElementById('grau');
-      const coeficientes = document.getElementById('coeficientes');
-
-      grau.addEventListener('change', () => {
-        while (coeficientes.firstChild) {
-          coeficientes.removeChild(coeficientes.firstChild);
-        }
-
-      
-        for (let i = 0; i <= grau.value; i++) {
-          const label = document.createElement('label');
-          label.setAttribute('for', `x${i}`);
-          label.textContent = `x${i}:`;
-          coeficientes.appendChild(label);
-
-          const input = document.createElement('input');
-          input.setAttribute('type', 'number');
-          input.setAttribute('id', `x${i}`);
-          input.setAttribute('name', `x${i}`);
-          input.setAttribute('required', '');
-          coeficientes.appendChild(input);
-        }
-      });
-
-      formulario.addEventListener('submit', (event) => {
-        event.preventDefault(); 
-
-        const x = [];
-
-        for (let i = 0; i <= grau.value; i++) {
-          x.push(parseFloat(document.getElementById(`x${i}`).value));
-        }
-
-        const a = parseFloat(document.getElementById('a').value);
-
-        let resultado = x[x.length - 1];
-        for (let i = x.length - 2; i >= 0; i--) {
-          resultado = resultado * a + x[i];
-        }
-        const resultadoElement = document.getElementById('resultado');
-        resultadoElement.textContent = `O valor da função polinomial para x = ${a} é: ${resultado}`;
-
-      });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
